@@ -22,6 +22,7 @@ $obj_battery = @()
 
 
         Switch ($enclosure.ChassisTypes) {
+            { $_ -lt 1 } { $chassis = "" }            
             { $_ -eq 1 } { $chassis = "Other" }
             { $_ -eq 2 } { $chassis = "Unknown" }
             { $_ -eq 3 } { $chassis = "Desktop " }
@@ -46,6 +47,7 @@ $obj_battery = @()
             { $_ -eq 22 } { $chassis = "Storage Chassis" }
             { $_ -eq 23 } { $chassis = "Rack Mount Chassis" }
             { $_ -eq 24 } { $chassis = "Sealed-Case PC" }
+            { $_ -gt 24 } { $chassis = "" }            
         } # switch chassistypes
 
             $is_a_laptop = $false
@@ -58,18 +60,21 @@ $obj_battery = @()
 
 
         Switch ($compsys.DomainRole) {
+            { $_ -lt 0 } { $domain_role = "" }             
             { $_ -eq 0 } { $domain_role = "Standalone Workstation" }            
             { $_ -eq 1 } { $domain_role = "Member Workstation" }
             { $_ -eq 2 } { $domain_role = "Standalone Server" }
             { $_ -eq 3 } { $domain_role = "Member Server" }
             { $_ -eq 4 } { $domain_role = "Backup Domain Controller" }
             { $_ -eq 5 } { $domain_role = "Primary Domain Controller" }
+            { $_ -gt 5 } { $domain_role = "" }             
         } # switch domainrole
 
 
 
 
         Switch ($compsys.PCSystemType) {
+            { $_ -lt 0 } { $pc_type = "" }             
             { $_ -eq 0 } { $pc_type = "Unspecified" }            
             { $_ -eq 1 } { $pc_type = "Desktop" }
             { $_ -eq 2 } { $pc_type = "Mobile" }
@@ -78,22 +83,26 @@ $obj_battery = @()
             { $_ -eq 5 } { $pc_type = "Small Office and Home Office (SOHO) Server" }
             { $_ -eq 6 } { $pc_type = "Appliance PC" }
             { $_ -eq 7 } { $pc_type = "Performance Server" }
-            { $_ -eq 8 } { $pc_type = "Maximum" }                                    
+            { $_ -eq 8 } { $pc_type = "Maximum" }     
+            { $_ -gt 8 } { $pc_type = "" }                                              
         } # switch pcsystemtype
 
 
 
 
-        Switch ($os.ProductType) {        
+        Switch ($os.ProductType) {   
+            { $_ -lt 1 } { $product_type = "" }                  
             { $_ -eq 1 } { $product_type = "Work Station" }
             { $_ -eq 2 } { $product_type = "Domain Controller" }
             { $_ -eq 3 } { $product_type = "Server" }
+            { $_ -gt 3 } { $product_type = "" }             
         } # switch producttype
 
 
 
 
         Switch ($battery.Availability) {
+            { $_ -lt 1 } { $availability = "" }            
             { $_ -eq 1 } { $availability = "Other" }
             { $_ -eq 2 } { $availability = "Unknown" }
             { $_ -eq 3 } { $availability = "Running or Full Power" }
@@ -115,12 +124,14 @@ $obj_battery = @()
             { $_ -eq 19 } { $availability = "Not Ready: The device is not ready." }
             { $_ -eq 20 } { $availability = "Not Configured: The device is not configured." }
             { $_ -eq 21 } { $availability = "Quiesced: The device is quiet." }
+            { $_ -gt 21 } { $availability = "" }             
         } # switch availability
 
 
 
 
         Switch ($battery.BatteryStatus) {
+            { $_ -lt 1 } { $status = "" }            
             { $_ -eq 1 } { $status = "Other: The battery is discharging." }
             { $_ -eq 2 } { $status = "Unknown: The system has access to AC so no battery is being discharged. However, the battery is not necessarily charging." }
             { $_ -eq 3 } { $status = "Fully Charged" }
@@ -132,12 +143,14 @@ $obj_battery = @()
             { $_ -eq 9 } { $status = "Charging and Critical" }
             { $_ -eq 10 } { $status = "Undefined" }
             { $_ -eq 11 } { $status = "Partially Charged" }
+            { $_ -gt 11 } { $status = "" }             
         } # switch batterystatus
 
 
 
 
         Switch ($battery.Chemistry) {
+            { $_ -lt 1 } { $chemistry = "" }            
             { $_ -eq 1 } { $chemistry = "Other" }
             { $_ -eq 2 } { $chemistry = "Unknown" }
             { $_ -eq 3 } { $chemistry = "Lead Acid" }
@@ -146,12 +159,14 @@ $obj_battery = @()
             { $_ -eq 6 } { $chemistry = "Lithium-ion" }
             { $_ -eq 7 } { $chemistry = "Zinc Air" }
             { $_ -eq 8 } { $chemistry = "Lithium Polymer" }
+            { $_ -gt 8 } { $chemistry = "" }              
         } # switch chemistry
 
 
 
 
         Switch ($battery.PowerManagementCapabilities) {
+            { $_ -lt 0 } { $power_management = "" }            
             { $_ -eq 0 } { $power_management = "Unknown" }
             { $_ -eq 1 } { $power_management = "Not Supported" }
             { $_ -eq 2 } { $power_management = "Disabled" }
@@ -160,6 +175,7 @@ $obj_battery = @()
             { $_ -eq 5 } { $power_management = "Power State Settable" }
             { $_ -eq 6 } { $power_management = "Power Cycling Supported" }
             { $_ -eq 7 } { $power_management = "Timed Power On Supported" }
+            { $_ -gt 7 } { $power_management = "" }              
         } # switch powermanagementcapabilities
 
 
