@@ -212,9 +212,6 @@
     </tr>
     <tr>
         <th rowspan="5"></th>
-        <td style="padding:6px">ASCII Art: <a href="http://www.figlet.org/">http://www.figlet.org/</a> and <a href="http://www.network-science.de/ascii/">ASCII Art Text Generator</a></td>
-    </tr>
-    <tr>
         <td style="padding:6px"><a href="https://msdn.microsoft.com/en-us/library/aa394074%28v=vs.85%29.aspx">Win32_Battery class</a></td>   
     </tr>
     <tr>
@@ -225,6 +222,9 @@
     </tr>
     <tr>
         <td style="padding:6px"><a href="https://msdn.microsoft.com/en-us/library/aa394239(v=vs.85).aspx">Win32_OperatingSystem class</a></td>   
+    </tr>  
+    <tr>
+        <td style="padding:6px">ASCII Art: <a href="http://www.figlet.org/">http://www.figlet.org/</a> and <a href="http://www.network-science.de/ascii/">ASCII Art Text Generator</a></td>
     </tr>    
 </table>
 
