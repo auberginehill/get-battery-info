@@ -263,6 +263,7 @@ $obj_battery = @()
 
 # Write the battery results in console
 Write-Output $empty_line
+Write-Output $empty_line
 Write-Output $obj_battery_selection | Format-List
 
 
