@@ -27,7 +27,7 @@
    </tr>
    <tr>
       <td style="padding:6px"><strong>Description:</strong></td>
-      <td style="padding:6px">GGet-BatteryInfo uses Windows Management Instrumentation (WMI) to retrieve basic battery and computer information and displays the results in console.</td>
+      <td style="padding:6px">Get-BatteryInfo uses Windows Management Instrumentation (WMI) to retrieve basic battery and computer information and displays the results in console.</td>
    </tr>
    <tr>
       <td style="padding:6px"><strong>Homepage:</strong></td>
