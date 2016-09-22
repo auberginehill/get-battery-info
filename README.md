@@ -1,4 +1,6 @@
 <!-- Visual Studio Code: For a more comfortable reading experience, use the key combination Ctrl + Shift + V 
+     Visual Studio Code: To crop the tailing end space characters out, please use the key combination Ctrl + Shift + X
+     Visual Studio Code: To improve the formatting of HTML code, press Shift + Alt + F and the selected area will be reformatted in a html file.
 
    _____      _          ____        _   _                  _____        __       
   / ____|    | |        |  _ \      | | | |                |_   _|      / _|      
@@ -163,7 +165,7 @@
                                     </table>
                                 </ol>
                         </p>
-                    <p>For more information, type "<code>help Set-ExecutionPolicy -Full</code>" or visit <a href="https://technet.microsoft.com/en-us/library/hh849812.aspx">Set-ExecutionPolicy</a>.</p>
+                    <p>For more information, please type "<code>help Set-ExecutionPolicy -Full</code>" or visit <a href="https://technet.microsoft.com/en-us/library/hh849812.aspx">Set-ExecutionPolicy</a>.</p>
                     </li>
                 </p>
                 <p>
@@ -236,10 +238,16 @@
  <table>
     <tr>
         <th><img class="emoji" title="www" alt="www" height="28" width="28" align="absmiddle" src="https://assets-cdn.github.com/images/icons/emoji/unicode/0023-20e3.png"></th>
-        <td style="padding:6px"><a href="https://github.com/auberginehill/get-computer-info">Get-ComputerInfo</a></td>          
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-computer-info">Get-ComputerInfo</a></td>       
     </tr>
     <tr>
-        <th rowspan="5"></th>
+        <th rowspan="7"></th>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-directory-size">Get-DirectorySize</a></td>
+    </tr>
+    <tr>
+        <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-programs">Get-InstalledPrograms</a></td>
+    </tr>
+    <tr>
         <td style="padding:6px"><a href="https://github.com/auberginehill/get-installed-windows-updates">Get-InstalledWindowsUpdates</a></td>    
     </tr>
     <tr>
