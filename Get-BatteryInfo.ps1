@@ -201,12 +201,12 @@ $obj_battery = @()
                 $result = [string]''
             } # else (if)
 
-                If ($result.Contains("0 h")) {
-                    $result = $result.Replace("0 h","")
-                    } If ($result.Contains("0 min")) {
-                        $result = $result.Replace("0 min","")
-                        } If ($result.Contains("0 sec")) {
-                        $result = $result.Replace("0 sec","")
+                If ($result.Contains(" 0 h")) {
+                    $result = $result.Replace(" 0 h"," ")
+                    } If ($result.Contains(" 0 min")) {
+                        $result = $result.Replace(" 0 min"," ")
+                        } If ($result.Contains(" 0 sec")) {
+                        $result = $result.Replace(" 0 sec"," ")
                 } # if ($result: first)
 
         $result
