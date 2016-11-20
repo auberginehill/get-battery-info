@@ -274,6 +274,8 @@ $gps = Get-Process | Measure-Object -Property ProcessName
 $average_load = Get-WmiObject -Class Win32_Processor -ComputerName $computer | Measure-Object -property LoadPercentage -Average
 
 
+
+
 # Write the summary table in console
 Write-Output $empty_line
 Write-Output "Processes: $($gps.Count)      Average CPU Load: $($average_load.Average) %      Battery Level: $($obj_battery | Select-Object -ExpandProperty 'Estimated Charge Remaining')      Remaining Battery Time: $($obj_battery | Select-Object -ExpandProperty 'Estimated Run Time')"
@@ -285,6 +287,22 @@ Write-Output $empty_line
 
 
 
+# Write a battery report (and an adjacent xml-file) in $path on Windows 8+ machines
+# Source: http://www.zdnet.com/article/windows-10-tip-check-the-performance-of-your-laptop-battery/
+# Source: Windows version numbers: https://msdn.microsoft.com/en-us/library/windows/desktop/ms724833%28v=vs.85%29.aspx
+# Credit: Richard: "How to find the Windows version from the PowerShell command line?"
+If (([System.Environment]::OSVersion.Version) -ge (New-Object 'Version' 6.2)) {
+
+    # Determine the current directory                                                         # Credit: JaredPar and Matthew Pirocchi: "What's the best way to determine the location of the current PowerShell script?"
+    $script_path = Split-Path -parent $MyInvocation.MyCommand.Definition
+
+    cd $path
+    Start-Process PowerCfg -ArgumentList batteryreport | Out-Null
+    cd $script_path 
+
+} Else {
+    $continue = $true
+} # else
 
 
 
@@ -318,6 +336,22 @@ $time = Get-Date -Format g                                                      
 
 
 
+
+   _____
+  / ____|
+ | (___   ___  _   _ _ __ ___ ___
+  \___ \ / _ \| | | | '__/ __/ _ \
+  ____) | (_) | |_| | | | (_|  __/
+ |_____/ \___/ \__,_|_|  \___\___|
+
+
+http://stackoverflow.com/questions/5466329/whats-the-best-way-to-determine-the-location-of-the-current-powershell-script?noredirect=1&lq=1      # JaredPar and Matthew Pirocchi: "What's the best way to determine the location of the current PowerShell script?"
+http://www.zdnet.com/article/windows-10-tip-check-the-performance-of-your-laptop-battery/                                                       # Windows 10 tip: Check the performance of your laptop battery
+http://stackoverflow.com/questions/7330187/how-to-find-the-windows-version-from-the-powershell-command-line                                     # Richard: "How to find the Windows version from the PowerShell command line?"
+
+
+
+
   _    _      _
  | |  | |    | |
  | |__| | ___| |_ __
@@ -335,7 +369,9 @@ Retrieves basic battery information.
 
 .DESCRIPTION
 Get-BatteryInfo uses Windows Management Instrumentation (WMI) to retrieve basic
-battery and computer information and displays the results in console.
+battery and computer information and displays the results in console. On Windows 8+ 
+machines Get-BatteryInfo also launches the inbuilt PowerCfg /batteryreport command to 
+generate a detailed Battery Report HTML-file. 
 
 .OUTPUTS
 General computer information, such as Computer, Manufacturer, Computer Model, System Type, 
@@ -344,15 +380,15 @@ or not (based on the chassis information) is displayed along with battery relate
 such as Total Number of installed Batteries, Battery Class, Battery Name, Battery Type, Estimated 
 Charge Remaining, Estimated Run Time, Battery Voltage, Battery Availability, Battery Status,
 Battery Chemistry, Power Management Capabilities, Status, Battery Level and Remaining Battery 
-Time in console.
+Time in console. On Windows 8+ machines also a detailed Battery Report (battery-report.html and 
+an adjacent XML-file) will be created at $path.
 
 .NOTES
-Please note that the optional file listed under Options-header will(, if the option is enabled by
-copy-pasting the relevant code above the [End of Line] -marker) be created in a directory, which is
-specified with the $path variable (at line 6). The $env:temp variable points to the current temp
-folder. The default value of the $env:temp variable is C:\Users\<username>\AppData\Local\Temp
-(i.e. each user account has their own separate temp folder at path %USERPROFILE%\AppData\Local\Temp).
-To see the current temp path, for instance a command
+Please note that on Windows 8+ machines the battery report files will be created in a directory, 
+which is specified with the $path variable (at line 6). The $env:temp variable points to the 
+current temp folder. The default value of the $env:temp variable is 
+C:\Users\<username>\AppData\Local\Temp (i.e. each user account has their own separate temp folder 
+at path %USERPROFILE%\AppData\Local\Temp). To see the current temp path, for instance a command
 
     [System.IO.Path]::GetTempPath()
 
@@ -361,7 +397,8 @@ to C:\Temp, please, for example, follow the instructions at
 http://www.eightforums.com/tutorials/23500-temporary-files-folder-change-location-windows.html
 
     Homepage:           https://github.com/auberginehill/get-battery-info
-    Version:            1.0
+    Short URL:          http://tinyurl.com/jnnuvq3
+    Version:            1.1
 
 .EXAMPLE
 ./Get-BatteryInfo
@@ -400,8 +437,8 @@ execution properties. The default value is "Set-ExecutionPolicy restricted".
                     Policy scope.
 
 
-For more information,
-type "help Set-ExecutionPolicy -Full" or visit https://technet.microsoft.com/en-us/library/hh849812.aspx.
+For more information, please type "help Set-ExecutionPolicy -Full" or visit 
+https://technet.microsoft.com/en-us/library/hh849812.aspx.
 
 .EXAMPLE
 New-Item -ItemType File -Path C:\Temp\Get-BatteryInfo.ps1
@@ -415,5 +452,9 @@ https://msdn.microsoft.com/en-us/library/aa394074%28v=vs.85%29.aspx
 https://msdn.microsoft.com/en-us/library/aa394474(v=vs.85).aspx
 https://msdn.microsoft.com/en-us/library/aa394102(v=vs.85).aspx
 https://msdn.microsoft.com/en-us/library/aa394239(v=vs.85).aspx
+https://msdn.microsoft.com/en-us/library/windows/desktop/ms724833%28v=vs.85%29.aspx
+http://stackoverflow.com/questions/7330187/how-to-find-the-windows-version-from-the-powershell-command-line
+http://stackoverflow.com/questions/5466329/whats-the-best-way-to-determine-the-location-of-the-current-powershell-script?noredirect=1&lq=1
+http://www.zdnet.com/article/windows-10-tip-check-the-performance-of-your-laptop-battery/
 
 #>
