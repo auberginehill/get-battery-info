@@ -375,7 +375,7 @@ generate a detailed Battery Report HTML-file.
 
 .OUTPUTS
 General computer information, such as Computer, Manufacturer, Computer Model, System Type, 
-Domain Role, Chassis, PC Type, Processes, Average CPU Load and weather the machine is a laptop 
+Domain Role, Chassis, PC Type, Processes, Average CPU Load and whether the machine is a laptop 
 or not (based on the chassis information) is displayed along with battery related information, 
 such as Total Number of installed Batteries, Battery Class, Battery Name, Battery Type, Estimated 
 Charge Remaining, Estimated Run Time, Battery Voltage, Battery Availability, Battery Status,
