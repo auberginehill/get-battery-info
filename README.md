@@ -90,7 +90,7 @@
         <th>:arrow_right:</th>
         <td style="padding:6px">
             <ul>
-                <li>General computer information, such as Computer, Manufacturer, Computer Model, System Type, Domain Role, Chassis, PC Type, Processes, Average CPU Load and weather the machine is a laptop or not (based on the chassis information) is displayed along with battery related information, such as Total Number of installed Batteries, Battery Class, Battery Name, Battery Type, Estimated Charge Remaining, Estimated Run Time, Battery Voltage, Battery Availability, Battery Status, Battery Chemistry, Power Management Capabilities, Status, Battery Level and Remaining Battery Time in console. On Windows 8+ machines also a detailed Battery Report (<code>battery-report.html</code> and an adjacent XML-file) will be created at <code>$path</code>.</li>
+                <li>General computer information, such as Computer, Manufacturer, Computer Model, System Type, Domain Role, Chassis, PC Type, Processes, Average CPU Load and whether the machine is a laptop or not (based on the chassis information) is displayed along with battery related information, such as Total Number of installed Batteries, Battery Class, Battery Name, Battery Type, Estimated Charge Remaining, Estimated Run Time, Battery Voltage, Battery Availability, Battery Status, Battery Chemistry, Power Management Capabilities, Status, Battery Level and Remaining Battery Time in console. On Windows 8+ machines also a detailed Battery Report (<code>battery-report.html</code> and an adjacent XML-file) will be created at <code>$path</code>.</li>
             </ul>
         </td>
     </tr>
